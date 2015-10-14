@@ -64,5 +64,8 @@ case $mvFramework in
     backbone )                      bower i --save backbone
                                     ;;
 
+    angular )                       bower i --save angular
+                                    ;;
+
     * )                             echo 'error: bad MV* framework'
 esac
