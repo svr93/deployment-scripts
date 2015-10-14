@@ -45,3 +45,24 @@ mkdir $baseDir/adapter &> /dev/null
 mkdir $baseDir/global &> /dev/null
 mkdir $baseDir/lib &> /dev/null
 mkdir $baseDir/vendor &> /dev/null
+
+# creates package.json
+npm init
+
+# creates file with Bower settings
+echo '
+{
+    "directory": "client/www/js/vendor/script"
+}
+' > .bowerrc
+
+echo 'Add settings for Bower:'
+bower init
+
+# installs base framework
+case $mvFramework in
+    backbone )                      bower i --save backbone
+                                    ;;
+
+    * )                             echo 'error: bad MV* framework'
+esac
