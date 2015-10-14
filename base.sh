@@ -49,6 +49,9 @@ mkdir $baseDir/vendor &> /dev/null
 # creates package.json
 npm init
 
+# installs npm modules
+npm i gulp
+
 # creates file with Bower settings
 echo '
 {
