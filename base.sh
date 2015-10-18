@@ -18,7 +18,7 @@ moduleSystem='es6'
 # cordova using
 cordovaProject=false
 
-while [ "$1" != "" ]; do
+while [[ "$1" != "" ]]; do
     case $1 in
         --cordova )                 cordovaProject=true
                                     ;;
@@ -48,8 +48,8 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if nvm --version &> /dev/null
-then    nvm ls | grep $nodeVersion || nvm install $nodeVersion
+if [[ $(nvm --version) ]]; then
+        nvm ls | grep $nodeVersion || nvm install $nodeVersion
         nvm use $nodeVersion
         if [[ ! $(gulp --version) ]]; then
             npm i -g gulp
@@ -72,7 +72,7 @@ cp server-example.js ../$projName/server/server.js
 cd ../$projName
 
 # makes common dirs
-if [ $cordovaProject = true ]; then
+if [[ $cordovaProject = true ]]; then
     cordova create client
 else
     mkdir client
@@ -94,7 +94,7 @@ npm init
 npm i --save-dev gulp
 
 # installs gulp modules
-if [ $ecmaScript = 6 ]; then
+if [[ $ecmaScript = 6 ]]; then
     npm i --save-dev gulp-babel
     npm i --save-dev babel-plugin-object-assign
 fi
@@ -113,7 +113,7 @@ npm i --save-dev gulp-less
 npm i --save-dev gulp-mocha
 npm i --save-dev gulp-rename
 
-if [ $moduleSystem = 'amd' ]; then
+if [[ $moduleSystem = 'amd' ]]; then
     npm i --save-dev gulp-requirejs-optimize
 fi
 npm i --save-dev gulp-ssh
