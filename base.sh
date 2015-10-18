@@ -66,6 +66,7 @@ mkdir ../$projName
 # copies example files
 cp gitignore-example ../$projName/.gitignore
 cp gulpfile-example.js ../$projName/gulpfile.js
+cp server-example.js ../$projName/server.js
 
 cd ../$projName
 
