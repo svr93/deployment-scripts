@@ -4,10 +4,13 @@
 nodeVersion=0.12
 
 # default ECMA-262 version
-ecmaScript=5
+ecmaScript=6
 
 # default MV* framework
 mvFramework='backbone'
+
+# default module system
+moduleSystem='es6'
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -23,6 +26,9 @@ while [ "$1" != "" ]; do
                                     mvFramework=$1
                                     ;;
 
+        --amd | --requirejs )       moduleSystem='amd'
+                                    ;;
+
         * )                         echo 'error: bad param'
                                     ;;
     esac
@@ -33,7 +39,7 @@ if nvm --version &> /dev/null
 then    nvm ls | grep $nodeVersion || nvm install $nodeVersion
         nvm use $nodeVersion
 else    echo 'error: nvm not found'        
-fi        
+fi
 
 # makes common dirs
 mkdir client &> /dev/null
@@ -46,11 +52,42 @@ mkdir $baseDir/global &> /dev/null
 mkdir $baseDir/lib &> /dev/null
 mkdir $baseDir/vendor &> /dev/null
 
+# creates new git info
+rm -rf .git
+git init
+git add .
+git commit -a -m "initial_commit"
+
 # creates package.json
 npm init
 
 # installs npm modules
-npm i gulp
+npm i --save-dev gulp
+
+# installs gulp modules
+if [ ecmaScript = 6 ]; then
+    npm i --save-dev gulp-babel
+fi
+npm i --save-dev gulp-closure-compiler-service
+npm i --save-dev gulp-concat
+
+npm i --save-dev gulp-connect
+npm i --save-dev gulp-csslint
+npm i --save-dev gulp-html-minifier
+
+npm i --save-dev gulp-html-replace
+npm i --save-dev gulp-if
+npm i --save-dev gulp-jshint
+
+npm i --save-dev gulp-less
+npm i --save-dev gulp-mocha
+npm i --save-dev gulp-rename
+
+if [ moduleSystem = 'amd' ]; then
+    npm i --save-dev gulp-requirejs-optimize
+fi
+npm i --save-dev gulp-ssh
+npm i --save-dev gulp-w3cjs
 
 # creates file with Bower settings
 echo '
