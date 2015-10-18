@@ -49,6 +49,10 @@ else    echo 'error: nvm not found'
 fi
 
 mkdir ../$projName
+
+# copies example files
+cp gitignore-example ../$projName/.gitignore
+
 cd ../$projName
 
 # makes common dirs
@@ -61,11 +65,6 @@ mkdir $baseDir/adapter &> /dev/null
 mkdir $baseDir/global &> /dev/null
 mkdir $baseDir/lib &> /dev/null
 mkdir $baseDir/vendor &> /dev/null
-
-# creates new git info
-git init
-git add .
-git commit -a -m "initial_commit"
 
 # creates package.json
 npm init
@@ -118,3 +117,9 @@ case $mvFramework in
 
     * )                             echo 'error: bad MV* framework'
 esac
+
+# creates new git info
+git init
+git add .
+git commit -a -m "initial_commit"
+
