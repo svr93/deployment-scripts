@@ -66,7 +66,8 @@ mkdir ../$projName
 # copies example files
 cp gitignore-example ../$projName/.gitignore
 cp gulpfile-example.js ../$projName/gulpfile.js
-cp server-example.js ../$projName/server.js
+mkdir ../$projName/server
+cp server-example.js ../$projName/server/server.js
 
 cd ../$projName
 
@@ -115,6 +116,8 @@ if [ moduleSystem = 'amd' ]; then
 fi
 npm i --save-dev gulp-ssh
 npm i --save-dev gulp-w3cjs
+
+npm i --save-dev node-static
 
 # creates file with Bower settings
 echo '
