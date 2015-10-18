@@ -145,3 +145,6 @@ esac
 git init
 git add .
 git commit -a -m "initial_commit"
+
+# executes 'default' task
+gulp
