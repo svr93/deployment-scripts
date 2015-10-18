@@ -94,8 +94,9 @@ npm init
 npm i --save-dev gulp
 
 # installs gulp modules
-if [ ecmaScript = 6 ]; then
+if [ $ecmaScript = 6 ]; then
     npm i --save-dev gulp-babel
+    npm i --save-dev babel-plugin-object-assign
 fi
 npm i --save-dev gulp-closure-compiler-service
 npm i --save-dev gulp-concat
@@ -112,7 +113,7 @@ npm i --save-dev gulp-less
 npm i --save-dev gulp-mocha
 npm i --save-dev gulp-rename
 
-if [ moduleSystem = 'amd' ]; then
+if [ $moduleSystem = 'amd' ]; then
     npm i --save-dev gulp-requirejs-optimize
 fi
 npm i --save-dev gulp-ssh
