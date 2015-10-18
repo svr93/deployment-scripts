@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# default project name
+projName='__proj'
+
 # default Node version
 nodeVersion=0.12
 
@@ -14,6 +17,10 @@ moduleSystem='es6'
 
 while [ "$1" != "" ]; do
     case $1 in
+        -name | --project-name )    shift
+                                    projName=$1
+                                    ;;
+
         -nv | --node-version )      shift
                                     nodeVersion=$1
                                     ;;
@@ -41,6 +48,9 @@ then    nvm ls | grep $nodeVersion || nvm install $nodeVersion
 else    echo 'error: nvm not found'        
 fi
 
+mkdir ../$projName
+cd ../$projName
+
 # makes common dirs
 mkdir client &> /dev/null
 mkdir client/www &> /dev/null
@@ -53,7 +63,6 @@ mkdir $baseDir/lib &> /dev/null
 mkdir $baseDir/vendor &> /dev/null
 
 # creates new git info
-rm -rf .git
 git init
 git add .
 git commit -a -m "initial_commit"
