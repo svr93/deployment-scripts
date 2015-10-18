@@ -78,6 +78,7 @@ else
     mkdir client
 fi
 mkdir client/www &> /dev/null
+cp ../deployment-scripts/index-example.html client/www/index.html
 mkdir client/www/js &> /dev/null
 
 baseDir='client/www/js'
