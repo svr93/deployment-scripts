@@ -6,6 +6,8 @@ var nodeStatic = require('node-static');
 var dirname = path.dirname(require.main.filename);
 var fileServer = new nodeStatic.Server(dirname + '/www');
 
+var PORT = 8000;
+
 require('http').createServer(function(req, res) {
 
     req.addListener('end', function() {
@@ -13,4 +15,5 @@ require('http').createServer(function(req, res) {
         fileServer.serve(req, res);
     }).resume();
 
-}).listen(8000);
+}).listen(PORT);
+console.log('Server listening on port ', PORT);
