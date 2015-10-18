@@ -15,8 +15,14 @@ mvFramework='backbone'
 # default module system
 moduleSystem='es6'
 
+# cordova using
+cordovaProject=false
+
 while [ "$1" != "" ]; do
     case $1 in
+        --cordova )                 cordovaProject=true
+                                    ;;
+
         -name | --project-name )    shift
                                     projName=$1
                                     ;;
@@ -56,7 +62,11 @@ cp gitignore-example ../$projName/.gitignore
 cd ../$projName
 
 # makes common dirs
-mkdir client &> /dev/null
+if [ $cordovaProject = true ]; then
+    cordova create client
+else
+    mkdir client
+fi
 mkdir client/www &> /dev/null
 mkdir client/www/js &> /dev/null
 
