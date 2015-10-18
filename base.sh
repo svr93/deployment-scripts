@@ -51,7 +51,14 @@ done
 if nvm --version &> /dev/null
 then    nvm ls | grep $nodeVersion || nvm install $nodeVersion
         nvm use $nodeVersion
-else    echo 'error: nvm not found'        
+        if [[ ! $(gulp --version) ]]; then
+            npm i -g gulp
+        fi
+        if [[ ! $(bower --version) ]]; then
+            npm i -g bower
+        fi
+
+else    echo 'error: nvm not found'
 fi
 
 mkdir ../$projName
