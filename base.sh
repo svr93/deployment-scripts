@@ -58,6 +58,7 @@ mkdir ../$projName
 
 # copies example files
 cp gitignore-example ../$projName/.gitignore
+cp gulpfile-example.js ../$projName/gulpfile.js
 
 cd ../$projName
 
@@ -132,4 +133,3 @@ esac
 git init
 git add .
 git commit -a -m "initial_commit"
-
