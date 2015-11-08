@@ -96,7 +96,7 @@ npm i --save-dev gulp
 # installs gulp modules
 if [[ $ecmaScript = 6 ]]; then
     npm i --save-dev gulp-babel
-    npm i --save-dev babel-plugin-object-assign
+    npm i --save-dev babel-plugin-transform-object-assign
 fi
 npm i --save-dev gulp-closure-compiler-service
 npm i --save-dev gulp-concat
