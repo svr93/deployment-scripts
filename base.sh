@@ -152,6 +152,10 @@ case $mvFramework in
     * )                             echo 'error: bad MV* framework'
 esac
 
+if [[ $moduleSystem = 'amd' ]]; then
+    bower i --save requirejs
+fi
+
 # creates new git info
 git init
 git add .
