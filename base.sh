@@ -4,7 +4,7 @@
 projName='__proj'
 
 # default Node version
-nodeVersion=0.12
+nodeVersion=5
 
 # default ECMA-262 version
 ecmaScript=6
@@ -96,6 +96,7 @@ npm i --save-dev gulp
 # installs gulp modules
 if [[ $ecmaScript = 6 ]]; then
     npm i --save-dev gulp-babel
+    npm i --save-dev babel-preset-es2015
     npm i --save-dev babel-plugin-transform-object-assign
 fi
 npm i --save-dev gulp-closure-compiler-service
@@ -113,7 +114,16 @@ npm i --save-dev gulp-less
 npm i --save-dev gulp-mocha
 npm i --save-dev gulp-rename
 
+# installs modules for tests
+npm i --save-dev karma
+npm i --save-dev karma-babel-preprocessor
+npm i --save-dev karma-chrome-launcher
+npm i --save-dev karma-jasmine
+npm i --save-dev jasmine-core
+
 if [[ $moduleSystem = 'amd' ]]; then
+    npm i --save-dev babel-plugin-transform-es2015-modules-amd
+    npm i --save-dev karma-requirejs
     npm i --save-dev gulp-requirejs-optimize
 fi
 npm i --save-dev gulp-ssh
@@ -124,7 +134,7 @@ npm i --save-dev node-static
 # creates file with Bower settings
 echo '
 {
-    "directory": "client/www/js/vendor/script"
+    "directory": "client/www/js/vendor"
 }
 ' > .bowerrc
 
